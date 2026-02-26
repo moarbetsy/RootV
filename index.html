@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Root to Rise Coaching | Empowering Healthy Routines</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="css/tailwind.css" rel="stylesheet" onerror="this.remove()">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --color-primary: #86A789; /* Light Green */
+            --color-secondary: #4F4A45; /* Brown */
+            --color-bg: #FDFBF7; /* Warm Cream */
+        }
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: var(--color-bg);
+            color: var(--color-secondary);
+            scroll-behavior: smooth;
+        }
+        .btn-primary {
+            background-color: var(--color-primary);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            filter: brightness(90%);
+            transform: translateY(-1px);
+        }
+        .text-brown { color: var(--color-secondary); }
+        .bg-cream { background-color: var(--color-bg); }
+        .border-brown { border-color: var(--color-secondary); }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .page-section { display: none; }
+        .page-section.active { display: block; }
+        
+        /* Accordion handling */
+        .faq-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
+        .faq-item.active .faq-content { max-height: 500px; }
+        .faq-item.active .faq-icon { transform: rotate(180deg); }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- GLOBAL HEADER -->
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <!-- Logo -->
+                <div class="flex items-center cursor-pointer" onclick="navigateTo('home')">
+                    <div class="w-10 h-10 bg-[#86A789] rounded-full flex items-center justify-center mr-3">
+                        <i data-lucide="sprout" class="text-white"></i>
+                    </div>
+                    <span class="text-xl font-bold tracking-tight text-brown">Root to Rise Coaching</span>
+                </div>
+
+                <!-- Desktop Nav -->
+                <nav class="hidden md:flex space-x-6 items-center">
+                    <a href="#" onclick="navigateTo('home')" class="hover:text-[#86A789] font-medium transition">Home</a>
+                    <a href="#" onclick="navigateTo('about')" class="hover:text-[#86A789] font-medium transition">About</a>
+                    <a href="#" onclick="navigateTo('programs')" class="hover:text-[#86A789] font-medium transition">Programs</a>
+                    <a href="#" onclick="navigateTo('how-it-works')" class="hover:text-[#86A789] font-medium transition">How It Works</a>
+                    <a href="#" onclick="navigateTo('parents')" class="hover:text-[#86A789] font-medium transition">For Parents</a>
+                    <a href="#" onclick="navigateTo('faqs')" class="hover:text-[#86A789] font-medium transition">FAQs</a>
+                    <button onclick="navigateTo('contact')" class="btn-primary px-5 py-2 rounded-full font-semibold shadow-md ml-4">
+                        Book a Free Intro Call
+                    </button>
+                </nav>
+
+                <!-- Mobile Menu Toggle -->
+                <div class="md:hidden">
+                    <button type="button" id="mobile-menu-btn" name="mobile-menu-toggle" class="p-2" aria-label="Open menu">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-100 px-4 py-4 space-y-3">
+            <a href="#" onclick="navigateTo('home')" class="block py-2 font-medium">Home</a>
+            <a href="#" onclick="navigateTo('about')" class="block py-2 font-medium">About</a>
+            <a href="#" onclick="navigateTo('programs')" class="block py-2 font-medium">Programs</a>
+            <a href="#" onclick="navigateTo('how-it-works')" class="block py-2 font-medium">How It Works</a>
+            <a href="#" onclick="navigateTo('parents')" class="block py-2 font-medium">For Parents</a>
+            <a href="#" onclick="navigateTo('faqs')" class="block py-2 font-medium">FAQs</a>
+            <button type="button" id="mobile-book-call" name="mobile-book-call" onclick="navigateTo('contact')" class="w-full btn-primary py-3 rounded-xl font-bold mt-4">
+                Book a Free Intro Call
+            </button>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        
+        <!-- 1. HOME PAGE -->
+        <section id="home" class="page-section active fade-in">
+            <!-- Hero -->
+            <div class="bg-gradient-to-b from-[#f4f7f4] to-transparent py-20 px-4 text-center">
+                <div class="max-w-4xl mx-auto">
+                    <h1 class="text-5xl md:text-6xl font-extrabold text-brown mb-6">Root to Rise Coaching</h1>
+                    <p class="text-xl md:text-2xl text-[#6b6b6b] mb-4">Helping teens and adults with special needs build healthy routines for life</p>
+                    <p class="text-lg text-[#4a4a4a] mb-8 max-w-2xl mx-auto">Gentle, structured online coaching focused on movement, nutrition, routine, and wellness—designed to support confidence, independence, and everyday wellbeing.</p>
+                    <button onclick="navigateTo('contact')" class="btn-primary px-8 py-4 rounded-full text-lg font-bold shadow-lg">
+                        Book a Free Intro Call
+                    </button>
+                </div>
+            </div>
+
+            <!-- Intro/Value Prop -->
+            <div class="max-w-5xl mx-auto py-16 px-4">
+                <div class="bg-white p-8 md:p-12 rounded-3xl shadow-sm border border-gray-100 text-center">
+                    <h2 class="text-3xl font-bold text-brown mb-6">A calm, supportive approach to healthy living</h2>
+                    <p class="text-lg leading-relaxed text-[#555]">
+                        Building a healthy lifestyle can feel overwhelming—especially for individuals who need structure, clarity, and encouragement. Root to Rise Coaching offers step‑by‑step guidance that meets each person where they are. This is not about perfection or pressure. It's about creating simple routines, celebrating small wins, and building habits that last.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Who This Is For -->
+            <div class="bg-[#f0f4f1] py-20">
+                <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h2 class="text-3xl font-bold text-brown mb-6">Who this is for</h2>
+                        <ul class="space-y-4 text-lg">
+                            <li class="flex items-start">
+                                <i data-lucide="check-circle-2" class="text-[#86A789] mt-1 mr-3 flex-shrink-0"></i>
+                                <span>Teens (13–18) with developmental, learning, or cognitive differences</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-lucide="check-circle-2" class="text-[#86A789] mt-1 mr-3 flex-shrink-0"></i>
+                                <span>Young adults building independence and daily structure</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-lucide="check-circle-2" class="text-[#86A789] mt-1 mr-3 flex-shrink-0"></i>
+                                <span>Adults who benefit from clear routines and accountability</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-lucide="check-circle-2" class="text-[#86A789] mt-1 mr-3 flex-shrink-0"></i>
+                                <span>Parents and caregivers seeking safe, respectful coaching support</span>
+                            </li>
+                        </ul>
+                        <p class="mt-8 italic text-gray-600">Programs are adapted to individual needs, abilities, and sensory preferences.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl shadow-xl overflow-hidden rotate-2">
+                        <!-- Placeholder for a calm, supportive image -->
+                        <div class="bg-[#e9eee9] aspect-video rounded-lg flex items-center justify-center">
+                             <i data-lucide="heart" class="w-20 h-20 text-[#86A789] opacity-50"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Focus Areas -->
+            <div class="max-w-7xl mx-auto py-20 px-4">
+                <h2 class="text-center text-3xl font-bold text-brown mb-16">What We Focus On</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8">
+                    <div class="bg-white p-6 rounded-2xl text-center shadow-sm hover:shadow-md transition">
+                        <div class="text-4xl mb-4">🌱</div>
+                        <h3 class="font-bold text-xl mb-2 text-brown">Movement</h3>
+                        <p class="text-sm">Adaptive, confidence-building fitness designed to feel safe, accessible, and achievable.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl text-center shadow-sm hover:shadow-md transition">
+                        <div class="text-4xl mb-4">🥗</div>
+                        <h3 class="font-bold text-xl mb-2 text-brown">Nutrition</h3>
+                        <p class="text-sm">Simple, realistic nutrition habits that respect sensory needs and individual preferences.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl text-center shadow-sm hover:shadow-md transition">
+                        <div class="text-4xl mb-4">🕒</div>
+                        <h3 class="font-bold text-xl mb-2 text-brown">Routine</h3>
+                        <p class="text-sm">Daily structure that reduces stress, builds consistency, and supports independence.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl text-center shadow-sm hover:shadow-md transition">
+                        <div class="text-4xl mb-4">💛</div>
+                        <h3 class="font-bold text-xl mb-2 text-brown">Wellness</h3>
+                        <p class="text-sm">Emotional regulation tools, self-care practices, and stress-management strategies.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl text-center shadow-sm hover:shadow-md transition">
+                        <div class="text-4xl mb-4">🌿</div>
+                        <h3 class="font-bold text-xl mb-2 text-brown">Growth</h3>
+                        <p class="text-sm">Building self-esteem, confidence, and a sense of personal capability.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- How coaching helps -->
+            <div class="max-w-5xl mx-auto py-16 px-4">
+                <div class="bg-white p-8 md:p-12 rounded-3xl shadow-sm border border-gray-100 text-center">
+                    <h2 class="text-3xl font-bold text-brown mb-6">How coaching helps</h2>
+                    <ul class="text-lg leading-relaxed text-[#555] text-left max-w-xl mx-auto space-y-3 list-disc pl-6">
+                        <li>Encourages healthy habits without pressure or shame</li>
+                        <li>Builds consistency through repetition and predictability</li>
+                        <li>Supports confidence and self-trust</li>
+                        <li>Adapts to different learning styles and abilities</li>
+                        <li>Focuses on progress at a comfortable pace</li>
+                    </ul>
+                    <p class="mt-6 text-[#555]">Coaching is supportive, non-clinical, and strength-based.</p>
+                </div>
+            </div>
+
+            <!-- How it works (3-step teaser) -->
+            <div class="bg-[#f0f4f1] py-16">
+                <div class="max-w-7xl mx-auto px-4">
+                    <h2 class="text-center text-3xl font-bold text-brown mb-12">How it works</h2>
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <div class="bg-white p-6 rounded-2xl text-center shadow-sm">
+                            <div class="text-3xl font-bold text-[#86A789] mb-2">1</div>
+                            <h3 class="font-bold text-xl mb-2 text-brown">Free Intro Call</h3>
+                            <p class="text-sm text-gray-600">A relaxed conversation to understand needs, answer questions, and ensure the right fit.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-2xl text-center shadow-sm">
+                            <div class="text-3xl font-bold text-[#86A789] mb-2">2</div>
+                            <h3 class="font-bold text-xl mb-2 text-brown">Personalized Plan</h3>
+                            <p class="text-sm text-gray-600">A simple, individualized plan based on goals, preferences, and daily life.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-2xl text-center shadow-sm">
+                            <div class="text-3xl font-bold text-[#86A789] mb-2">3</div>
+                            <h3 class="font-bold text-xl mb-2 text-brown">Ongoing Support</h3>
+                            <p class="text-sm text-gray-600">Regular online coaching sessions, guidance, and encouragement—adjusted as needs evolve.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Parent Callout -->
+            <div class="max-w-4xl mx-auto px-4 py-12">
+                <div class="bg-[#4F4A45] text-white p-10 rounded-3xl shadow-xl relative overflow-hidden">
+                    <div class="relative z-10">
+                        <h2 class="text-3xl font-bold mb-4">For parents & caregivers</h2>
+                        <p class="text-lg mb-6 text-gray-200">Your trust matters. Coaching is built around:</p>
+                        <div class="grid md:grid-cols-2 gap-4 mb-6">
+                            <div class="flex items-center"><i data-lucide="check" class="mr-2 text-[#86A789]"></i> Clear communication and expectations</div>
+                            <div class="flex items-center"><i data-lucide="check" class="mr-2 text-[#86A789]"></i> Safety, consent, and confidentiality</div>
+                            <div class="flex items-center"><i data-lucide="check" class="mr-2 text-[#86A789]"></i> Optional parent or caregiver involvement</div>
+                            <div class="flex items-center"><i data-lucide="check" class="mr-2 text-[#86A789]"></i> Respect for autonomy and individual dignity</div>
+                        </div>
+                        <p class="font-semibold italic">You're not handing your loved one off—you're partnering in their growth.</p>
+                    </div>
+                    <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-white opacity-5 rounded-full"></div>
+                </div>
+            </div>
+
+            <!-- Closing CTA -->
+            <div class="bg-cream py-20 text-center px-4">
+                <h2 class="text-3xl font-bold text-brown mb-4">A gentle path from where you are to where you want to be</h2>
+                <p class="max-w-2xl mx-auto mb-8 text-lg">Root to Rise Coaching is about steady progress, not quick fixes. With patience, structure, and encouragement, healthy habits can grow—one step at a time.</p>
+                <button onclick="navigateTo('contact')" class="btn-primary px-8 py-4 rounded-full text-lg font-bold">
+                    Book a Free Intro Call
+                </button>
+                <p class="mt-10 text-xs text-gray-500 max-w-xl mx-auto">Root to Rise Coaching provides educational and lifestyle coaching only and does not replace medical, nutritional, or mental health care.</p>
+            </div>
+        </section>
+
+        <!-- 2. ABOUT PAGE -->
+        <section id="about" class="page-section fade-in">
+            <div class="max-w-7xl mx-auto py-20 px-4">
+                <div class="grid md:grid-cols-2 gap-16 items-center mb-24">
+                    <div>
+                        <h1 class="text-4xl md:text-5xl font-bold text-brown mb-6">A gentle, structured approach to growth—rooted in respect and care</h1>
+                        <p class="text-xl text-gray-600 mb-6">I believe that everyone deserves the opportunity to feel strong, capable, and supported in their daily life.</p>
+                        <p class="text-lg leading-relaxed">Root to Rise Coaching was created to offer calm, consistent, and compassionate guidance for teens and adults with special needs—without pressure, judgment, or unrealistic expectations. This work is about meeting people where they are and helping them grow, one steady step at a time.</p>
+                    </div>
+                    <div class="bg-[#f0f4f1] h-[500px] rounded-3xl flex items-center justify-center">
+                        <i data-lucide="user" class="w-32 h-32 text-[#86A789] opacity-30"></i>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-12 mb-24">
+                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+                        <h2 class="text-3xl font-bold text-brown mb-6">Why I do this work</h2>
+                        <p class="mb-6">I've seen how overwhelming "healthy living" can feel—especially for individuals who benefit from routine, predictability, and clear support. Too often, fitness and nutrition spaces move too fast, expect too much, or fail to adapt to different needs.</p>
+                        <p class="font-bold text-[#86A789] mb-4">A space where:</p>
+                        <ul class="space-y-3 mb-6">
+                            <li class="flex items-center"><i data-lucide="plus" class="text-[#86A789] mr-2"></i> Progress is gentle and achievable</li>
+                            <li class="flex items-center"><i data-lucide="plus" class="text-[#86A789] mr-2"></i> Effort is celebrated</li>
+                            <li class="flex items-center"><i data-lucide="plus" class="text-[#86A789] mr-2"></i> Routines are clear and supportive</li>
+                            <li class="flex items-center"><i data-lucide="plus" class="text-[#86A789] mr-2"></i> Growth happens at a comfortable pace</li>
+                        </ul>
+                        <p class="italic">My goal is not to push people to change who they are, but to help them build habits that make everyday life feel more manageable and empowering.</p>
+                    </div>
+                    <div class="space-y-8">
+                        <div>
+                            <h2 class="text-3xl font-bold text-brown mb-4">My approach</h2>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="bg-cream p-4 rounded-xl border border-[#86A789]/20 text-center font-bold">Supportive, not clinical</div>
+                                <div class="bg-cream p-4 rounded-xl border border-[#86A789]/20 text-center font-bold">Structured, not rigid</div>
+                                <div class="bg-cream p-4 rounded-xl border border-[#86A789]/20 text-center font-bold">Encouraging, not pressuring</div>
+                                <div class="bg-cream p-4 rounded-xl border border-[#86A789]/20 text-center font-bold">Individualized, not one‑size‑fits‑all</div>
+                            </div>
+                            <p class="mt-6">Each program is adapted to the person in front of me—their abilities, preferences, sensory needs, and goals. We focus on simple routines, repetition, and consistency, because that's where real confidence grows. There is no rushing. There is no perfection. There is steady progress.</p>
+                        </div>
+                        <div class="p-8 bg-[#86A789] rounded-2xl text-white">
+                            <h2 class="text-2xl font-bold mb-4">A safe and respectful space</h2>
+                            <p class="mb-4 opacity-90">Trust is essential in this work. Root to Rise Coaching is built on:</p>
+                            <ul class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+                                <li class="flex items-center"><i data-lucide="shield" class="mr-2"></i> Clear boundaries and expectations</li>
+                                <li class="flex items-center"><i data-lucide="shield" class="mr-2"></i> Consent and confidentiality</li>
+                                <li class="flex items-center"><i data-lucide="shield" class="mr-2"></i> Strength-based, respectful language</li>
+                                <li class="flex items-center"><i data-lucide="shield" class="mr-2"></i> A non-judgmental environment</li>
+                            </ul>
+                            <p class="mt-4 text-sm opacity-90">Coaching is educational and lifestyle-focused, and always stays within a non-clinical scope.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-24">
+                    <h2 class="text-3xl font-bold text-brown mb-6 text-center">Working with teens, adults, and families</h2>
+                    <p class="text-center text-gray-600 mb-4">I work with:</p>
+                    <ul class="max-w-xl mx-auto space-y-2 mb-6 text-gray-600">
+                        <li class="flex items-start"><i data-lucide="check" class="text-[#86A789] mr-2 mt-1 flex-shrink-0"></i> Teens who benefit from gentle structure and encouragement</li>
+                        <li class="flex items-start"><i data-lucide="check" class="text-[#86A789] mr-2 mt-1 flex-shrink-0"></i> Young adults building independence and life skills</li>
+                        <li class="flex items-start"><i data-lucide="check" class="text-[#86A789] mr-2 mt-1 flex-shrink-0"></i> Adults seeking routine, accountability, and confidence</li>
+                        <li class="flex items-start"><i data-lucide="check" class="text-[#86A789] mr-2 mt-1 flex-shrink-0"></i> Parents and caregivers looking for safe, respectful support</li>
+                    </ul>
+                    <p class="text-center text-gray-600">I value collaboration and clear communication. When appropriate, parents and caregivers are welcomed as partners in the process, while always respecting the autonomy and dignity of the individual.</p>
+                </div>
+
+                <div class="mb-24">
+                    <h2 class="text-3xl font-bold text-brown mb-6 text-center">What I focus on</h2>
+                    <p class="text-center text-gray-600 mb-8">My coaching centers around five core areas:</p>
+                    <ul class="max-w-2xl mx-auto space-y-3 text-lg">
+                        <li class="flex items-start"><span class="font-bold text-[#86A789] mr-2">Movement:</span> Accessible, confidence-building physical activity</li>
+                        <li class="flex items-start"><span class="font-bold text-[#86A789] mr-2">Nutrition:</span> Simple, realistic habits that respect sensory preferences</li>
+                        <li class="flex items-start"><span class="font-bold text-[#86A789] mr-2">Routine:</span> Daily structure that reduces stress and supports independence</li>
+                        <li class="flex items-start"><span class="font-bold text-[#86A789] mr-2">Wellness:</span> Emotional regulation, self-care, and stress awareness</li>
+                        <li class="flex items-start"><span class="font-bold text-[#86A789] mr-2">Growth:</span> Self-esteem, autonomy, and trust in one's abilities</li>
+                    </ul>
+                    <p class="text-center mt-6 text-gray-600">These pillars work together to support both physical and emotional wellbeing.</p>
+                </div>
+
+                <div class="text-center py-20 bg-cream rounded-3xl">
+                    <h2 class="text-3xl font-bold text-brown mb-4">Let's take the first step together</h2>
+                    <p class="mb-8 max-w-xl mx-auto">If you're looking for a calm, supportive approach to building healthy routines—for yourself or someone you care for—I'd love to connect.</p>
+                    <button onclick="navigateTo('contact')" class="btn-primary px-8 py-4 rounded-full text-lg font-bold">Book a Free Intro Call</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. PROGRAMS PAGE -->
+        <section id="programs" class="page-section fade-in">
+            <div class="max-w-7xl mx-auto py-20 px-4">
+                <div class="text-center max-w-4xl mx-auto mb-20">
+                    <h1 class="text-4xl md:text-5xl font-bold text-brown mb-6">Supportive coaching designed to grow healthy habits—step by step</h1>
+                    <p class="text-lg">Root to Rise Coaching offers structured, compassionate online programs for teens and adults with special needs. Each program is designed to build movement, nutrition, routine, and wellness habits at a pace that feels safe and achievable. Programs are non-clinical, strength-based, and adapted to individual abilities, preferences, and sensory needs.</p>
+                </div>
+
+                <!-- Program Cards -->
+                <div class="grid md:grid-cols-2 gap-10 mb-20">
+                    <!-- 1:1 -->
+                    <div class="bg-white rounded-3xl p-10 shadow-lg border-t-8 border-[#86A789] flex flex-col">
+                        <div class="mb-6">
+                            <h2 class="text-3xl font-bold text-brown">1:1 Online Coaching</h2>
+                            <p class="text-[#86A789] font-semibold">Personalized support for meaningful, lasting change</p>
+                        </div>
+                        <p class="mb-6">One‑to‑one coaching provides individualized guidance in a calm, focused environment. This option is ideal for participants who benefit from personal attention, flexibility, and tailored routines.</p>
+                        <div class="mb-8">
+                            <h3 class="font-bold text-brown mb-3">What's included:</h3>
+                            <ul class="space-y-2 text-sm">
+                                <li>• Weekly or bi-weekly live online sessions (30–60 minutes)</li>
+                                <li>• Personalized fitness, nutrition, and routine planning</li>
+                                <li>• Adaptive movement options (chair-based, low-impact, or functional)</li>
+                                <li>• Simple habit-building tools and visual supports</li>
+                                <li>• Ongoing encouragement and accountability</li>
+                                <li>• Optional caregiver or parent check-ins</li>
+                            </ul>
+                            <p class="mt-3 text-sm"><strong>Best for:</strong> Teens who need individualized structure and support • Young adults building independence • Adults seeking routine, accountability, and confidence.</p>
+                        </div>
+                        <div class="mt-auto">
+                            <div class="bg-cream p-4 rounded-xl mb-6">
+                                <p class="text-xs uppercase tracking-widest text-gray-500 mb-1">Format</p>
+                                <p class="font-bold">Online (live sessions) | Investment: Shared during the intro call</p>
+                            </div>
+                            <button onclick="navigateTo('contact')" class="w-full btn-primary py-4 rounded-xl font-bold">Book a Free Intro Call</button>
+                        </div>
+                    </div>
+
+                    <!-- Group -->
+                    <div class="bg-white rounded-3xl p-10 shadow-lg border-t-8 border-[#4F4A45] flex flex-col">
+                        <div class="mb-6">
+                            <h2 class="text-3xl font-bold text-brown">Small Group Coaching</h2>
+                            <p class="text-[#4F4A45] font-semibold opacity-70">Community, routine, and shared growth</p>
+                        </div>
+                        <p class="mb-6">Small group coaching brings together 3–6 participants with similar needs or age ranges. Sessions focus on shared routines, gentle movement, and supportive connection—while still honoring individual differences.</p>
+                        <div class="mb-8">
+                            <h3 class="font-bold text-brown mb-3">What's included:</h3>
+                            <ul class="space-y-2 text-sm">
+                                <li>• Weekly live group sessions</li>
+                                <li>• Guided adaptive workouts and wellness practices</li>
+                                <li>• Simple, repeatable routines</li>
+                                <li>• Encouragement through shared progress</li>
+                                <li>• Clear session structure and predictable flow</li>
+                            </ul>
+                            <p class="mt-3 text-sm"><strong>Best for:</strong> Participants who enjoy gentle social interaction • Building confidence in a group setting • Practicing routines with peer support.</p>
+                        </div>
+                        <div class="mt-auto">
+                            <div class="bg-cream p-4 rounded-xl mb-6">
+                                <p class="text-xs uppercase tracking-widest text-gray-500 mb-1">Format</p>
+                                <p class="font-bold">Online (live group sessions) | Investment: Shared during the intro call</p>
+                            </div>
+                            <button onclick="navigateTo('contact')" class="w-full btn-primary py-4 rounded-xl font-bold">Book a Free Intro Call</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Why Coaching Matters -->
+                <div class="py-20">
+                    <h2 class="text-3xl font-bold text-center text-brown mb-12">Why Coaching Matters</h2>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                            <h3 class="font-bold text-lg mb-3">1. Individualized Guidance</h3>
+                            <p class="text-sm">Every person has unique needs, abilities, and preferences. A coach provides tailored support that respects these differences, rather than applying a one-size-fits-all approach. This personalization makes the experience feel relevant and achievable.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                            <h3 class="font-bold text-lg mb-3">2. Consistency and Routine</h3>
+                            <p class="text-sm">Many special-needs individuals thrive on predictability. A coach helps establish daily routines (morning/evening, meals, wellness breaks), reinforce habits over time, and provide accountability in a supportive, non-pressuring way. Consistency is key to long-term wellness.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                            <h3 class="font-bold text-lg mb-3">3. Safety and Adaptation</h3>
+                            <p class="text-sm">Physical and nutritional guidance needs to be safe and appropriate. Coaches can modify exercises for mobility, sensory sensitivities, or medical considerations, recommend gentle, functional movement that reduces injury risk, and provide nutrition guidance that considers sensory preferences, food aversions, and routines.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                            <h3 class="font-bold text-lg mb-3">4. Emotional Support and Motivation</h3>
+                            <p class="text-sm">Special-needs teens and adults may face frustration, anxiety, or low self-confidence when trying to start new habits. A coach encourages effort rather than perfection, celebrates small wins to build self-esteem, and helps participants manage stress, sensory overload, and emotional regulation.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                            <h3 class="font-bold text-lg mb-3">5. Building Independence and Life Skills</h3>
+                            <p class="text-sm">Coaching is not just about fitness or nutrition—it's about building life skills. Coaches teach participants how to structure their day, make healthy choices independently, and develop confidence to take ownership of their routines. Over time, participants gain autonomy, which improves long-term wellbeing.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                            <h3 class="font-bold text-lg mb-3">6. Support for Families</h3>
+                            <p class="text-sm">Coaches act as partners with parents or caregivers by providing guidance without taking over, offering reassurance and progress updates, and helping families reinforce routines at home. This reduces stress for caregivers while keeping the focus on the participant's growth and independence.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case Examples -->
+                <div class="py-20 bg-[#f4f7f4] rounded-3xl px-8">
+                    <h2 class="text-3xl font-bold text-center text-brown mb-12">Real examples of coaching in action</h2>
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <!-- Case 1 -->
+                        <div class="bg-white p-8 rounded-2xl shadow-md border border-[#86A789]/20">
+                            <h3 class="font-bold text-xl mb-4 text-brown">Teen with Autism</h3>
+                            <div class="space-y-3 text-sm">
+                                <div>
+                                    <p class="font-bold text-brown">Participant:</p>
+                                    <p class="text-gray-600">Alex, 15 years old</p>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-brown">Focus:</p>
+                                    <p class="text-gray-600">Building daily routines and independence</p>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-brown">Challenges:</p>
+                                    <p class="text-gray-600">Difficulty transitioning between activities, inconsistent eating and sleep routines, anxiety about new experiences</p>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-brown">Coaching Approach:</p>
+                                    <p class="text-gray-600">Introduced a visual morning and evening routine, guided short adaptive exercises, used sensory-friendly nutrition adjustments, provided check-ins with both Alex and parent</p>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-[#86A789]">Outcome:</p>
+                                    <p class="text-gray-600">Alex consistently followed daily routines with fewer transition issues, increased confidence in self-care tasks, greater comfort in physical activity</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Case 2 -->
+                        <div class="bg-white p-8 rounded-2xl shadow-md border border-[#86A789]/20">
+                            <h3 class="font-bold text-xl mb-4 text-brown">Young Adult with ADHD</h3>
+                            <div class="space-y-3 text-sm">
+                                <div>
+                                    <p class="font-bold text-brown">Participant:</p>
+                                    <p class="text-gray-600">Jordan, 19 years old</p>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-brown">Focus:</p>
+                                    <p class="text-gray-600">Consistency in wellness and self-care habits</p>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-brown">Challenges:</p>
+                                    <p class="text-gray-600">Forgetting meals, skipping workouts, inconsistent sleep, feeling overwhelmed by planning</p>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-brown">Coaching Approach:</p>
+                                    <p class="text-gray-600">Created simple weekly schedule with visual reminders, built short achievable routines, introduced step-by-step nutrition guidance, focused on small habit-building with positive reinforcement</p>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-[#86A789]">Outcome:</p>
+                                    <p class="text-gray-600">Developed consistent morning and evening routine, regular participation in physical activity and balanced meals, reduced stress and increased confidence</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Case 3 -->
+                        <div class="bg-white p-8 rounded-2xl shadow-md border border-[#86A789]/20">
+                            <h3 class="font-bold text-xl mb-4 text-brown">Adult with Anxiety</h3>
+                            <div class="space-y-3 text-sm">
+                                <div>
+                                    <p class="font-bold text-brown">Participant:</p>
+                                    <p class="text-gray-600">Sam, 27 years old</p>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-brown">Focus:</p>
+                                    <p class="text-gray-600">Emotional regulation and wellness</p>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-brown">Challenges:</p>
+                                    <p class="text-gray-600">Overwhelm in noisy environments, difficulty initiating movement, irregular meal patterns, stress management</p>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-brown">Coaching Approach:</p>
+                                    <p class="text-gray-600">Introduced calm sensory-friendly movement, guided gradual introduction of wellness practices, collaborated to create predictable daily schedule, used small achievable goals</p>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-[#86A789]">Outcome:</p>
+                                    <p class="text-gray-600">Improved ability to manage stress through self-regulation, developed consistent meal and movement habits, increased self-confidence and independence</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-center mt-12 text-xs text-gray-500 italic">*These examples are representative and do not guarantee individual results.</p>
+                </div>
+
+                <!-- For parents & caregivers / Not sure which program -->
+                <div class="py-16 space-y-12">
+                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+                        <h2 class="text-2xl font-bold text-brown mb-4">For parents & caregivers</h2>
+                        <p class="mb-4">Your involvement and peace of mind matter. Programs include:</p>
+                        <ul class="space-y-2 mb-4">
+                            <li class="flex items-center"><i data-lucide="check" class="text-[#86A789] mr-2"></i> Clear boundaries and expectations</li>
+                            <li class="flex items-center"><i data-lucide="check" class="text-[#86A789] mr-2"></i> Safety-first coaching practices</li>
+                            <li class="flex items-center"><i data-lucide="check" class="text-[#86A789] mr-2"></i> Respect for autonomy and dignity</li>
+                            <li class="flex items-center"><i data-lucide="check" class="text-[#86A789] mr-2"></i> Optional communication and check-ins</li>
+                            <li class="flex items-center"><i data-lucide="check" class="text-[#86A789] mr-2"></i> Confidentiality and consent</li>
+                        </ul>
+                        <p class="italic text-gray-600">Coaching is collaborative—you remain part of the journey.</p>
+                    </div>
+                    <div class="text-center bg-cream p-10 rounded-3xl">
+                        <h2 class="text-2xl font-bold text-brown mb-4">Not sure which program is the right fit?</h2>
+                        <p class="mb-6 max-w-xl mx-auto">The best place to start is a free intro call. We'll talk through needs, goals, and preferences to ensure the right level of support.</p>
+                        <button onclick="navigateTo('contact')" class="btn-primary px-8 py-4 rounded-full font-bold">Book a Free Intro Call</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. HOW IT WORKS PAGE -->
+        <section id="how-it-works" class="page-section fade-in">
+            <div class="max-w-7xl mx-auto py-20 px-4">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h1 class="text-4xl md:text-5xl font-bold text-brown mb-6">A clear, supportive process—designed to feel safe and manageable</h1>
+                    <p class="text-lg">Root to Rise Coaching follows a simple, predictable structure so participants and families know exactly what to expect. The process is calm, flexible, and adapted to individual needs—without pressure or overwhelm.</p>
+                </div>
+
+                <!-- Timeline / Stepper -->
+                <div class="relative py-12">
+                    <!-- Line -->
+                    <div class="hidden md:block absolute left-1/2 h-full w-1 bg-[#86A789]/20 -translate-x-1/2"></div>
+                    
+                    <div class="space-y-24">
+                        <!-- Step 1 -->
+                        <div class="relative flex flex-col md:flex-row items-center">
+                            <div class="md:w-1/2 md:pr-12 md:text-right mb-8 md:mb-0">
+                                <h3 class="text-2xl font-bold text-brown mb-3">Step 1: Free Intro Call</h3>
+                                <p class="text-gray-600 mb-4">We begin with a relaxed, no-obligation introductory call. During this conversation, we: get to know each other; talk about needs, goals, and daily challenges; discuss preferences, abilities, and sensory considerations; answer questions from participants and/or caregivers; make sure the program is the right fit.</p>
+                                <p class="text-sm italic">This call is about connection and clarity, not commitment.</p>
+                            </div>
+                            <div class="z-10 w-12 h-12 bg-[#86A789] text-white rounded-full flex items-center justify-center font-bold text-xl shadow-lg ring-8 ring-[#fdfbf7]">1</div>
+                            <div class="md:w-1/2 md:pl-12"></div>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div class="relative flex flex-col md:flex-row items-center">
+                            <div class="md:w-1/2 md:pr-12"></div>
+                            <div class="z-10 w-12 h-12 bg-[#86A789] text-white rounded-full flex items-center justify-center font-bold text-xl shadow-lg ring-8 ring-[#fdfbf7]">2</div>
+                            <div class="md:w-1/2 md:pl-12 mt-8 md:mt-0">
+                                <h3 class="text-2xl font-bold text-brown mb-3">Step 2: Personalized Intake & Planning</h3>
+                                <p class="text-gray-600 mb-4">After the intro call, a simple intake form helps gather important information to support safe and effective coaching. This includes: daily routines and current habits; movement experience and comfort level; nutrition preferences and sensitivities; wellness needs and stressors; support needs and communication preferences. Using this information, a personalized coaching plan is created—focused on realistic goals and gradual progress.</p>
+                            </div>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div class="relative flex flex-col md:flex-row items-center">
+                            <div class="md:w-1/2 md:pr-12 md:text-right mb-8 md:mb-0">
+                                <h3 class="text-2xl font-bold text-brown mb-3">Step 3: Coaching Sessions</h3>
+                                <p class="text-gray-600 mb-4">Coaching sessions take place online in a calm, structured environment. Sessions may include: gentle, adaptive movement; simple nutrition habit guidance; routine building and scheduling support; emotional regulation and wellness practices; encouragement, reflection, and confidence-building. Sessions follow a clear, repeatable format to support comfort and consistency.</p>
+                            </div>
+                            <div class="z-10 w-12 h-12 bg-[#86A789] text-white rounded-full flex items-center justify-center font-bold text-xl shadow-lg ring-8 ring-[#fdfbf7]">3</div>
+                            <div class="md:w-1/2 md:pl-12"></div>
+                        </div>
+
+                        <!-- Step 4 -->
+                        <div class="relative flex flex-col md:flex-row items-center">
+                            <div class="md:w-1/2 md:pr-12"></div>
+                            <div class="z-10 w-12 h-12 bg-[#86A789] text-white rounded-full flex items-center justify-center font-bold text-xl shadow-lg ring-8 ring-[#fdfbf7]">4</div>
+                            <div class="md:w-1/2 md:pl-12 mt-8 md:mt-0">
+                                <h3 class="text-2xl font-bold text-brown mb-3">Step 4: Ongoing Support & Adjustments</h3>
+                                <p class="text-gray-600 mb-4">Progress is never rushed. Coaching evolves as needs change. Ongoing support includes: regular check-ins; adjustments to routines and goals; reinforcement of positive habits; celebration of effort and small wins. When appropriate, caregivers may be included in check-ins to support consistency at home.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-20 bg-cream p-12 rounded-3xl text-center border-2 border-dashed border-[#86A789]/30">
+                    <h2 class="text-2xl font-bold text-brown mb-4">A pace that respects the individual</h2>
+                    <p class="max-w-2xl mx-auto mb-6">Root to Rise Coaching is built on the belief that meaningful change happens when people feel: <strong>Safe</strong>, <strong>Supported</strong>, <strong>Understood</strong>, and <strong>Respected</strong>. There are no deadlines to "catch up" and no pressure to perform. Growth happens step by step, at a pace that feels right.</p>
+                    <p class="mb-6 text-gray-600">If you're looking for a calm, structured, and compassionate approach to building healthy routines, the first step is a free intro call.</p>
+                    <button onclick="navigateTo('contact')" class="btn-primary px-10 py-4 rounded-full font-bold">Ready to begin?</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. PARENTS PAGE -->
+        <section id="parents" class="page-section fade-in">
+            <div class="max-w-7xl mx-auto py-20 px-4">
+                <div class="bg-[#4F4A45] text-white rounded-3xl p-12 md:p-20 text-center mb-20">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-6">A safe, respectful partnership—built on trust and communication</h1>
+                    <p class="text-xl max-w-3xl mx-auto opacity-90 italic">This work is collaborative. You are not handing your loved one off—you are partnering in their growth.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-16 mb-20">
+                    <div class="space-y-12">
+                        <div>
+                            <h2 class="text-3xl font-bold text-brown mb-4">Your role as a parent or caregiver</h2>
+                            <p class="mb-6 leading-relaxed">Your involvement is welcomed and respected. Depending on the individual's needs and age, you may choose to: join the intro call; support routine follow-through at home; receive optional check-ins or updates; help reinforce consistency between sessions.</p>
+                            <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex items-center">
+                                <i data-lucide="info" class="text-[#86A789] mr-4 w-12 h-12 flex-shrink-0"></i>
+                                <p class="text-sm font-medium">At the same time, coaching prioritizes the individual's voice, autonomy, and sense of ownership whenever appropriate.</p>
+                            </div>
+                        </div>
+                        <div>
+                            <h2 class="text-3xl font-bold text-brown mb-4">Safety, boundaries & trust</h2>
+                            <p class="mb-4">Your trust is essential. Root to Rise Coaching is built on clear boundaries and ethical practices. This includes:</p>
+                            <ul class="space-y-2">
+                                <li class="flex items-center"><i data-lucide="shield-check" class="text-[#86A789] mr-2"></i> Coaching within a non-clinical scope</li>
+                                <li class="flex items-center"><i data-lucide="shield-check" class="text-[#86A789] mr-2"></i> Clear communication and expectations</li>
+                                <li class="flex items-center"><i data-lucide="shield-check" class="text-[#86A789] mr-2"></i> Consent and confidentiality</li>
+                                <li class="flex items-center"><i data-lucide="shield-check" class="text-[#86A789] mr-2"></i> Respectful, inclusive language</li>
+                                <li class="flex items-center"><i data-lucide="shield-check" class="text-[#86A789] mr-2"></i> Defined session structure</li>
+                            </ul>
+                            <p class="mt-4 text-gray-600">Coaching does not include diagnosis, therapy, or medical treatment, and is designed to complement—not replace—professional care when needed.</p>
+                        </div>
+                    </div>
+                    <div class="bg-cream rounded-3xl p-10 flex flex-col justify-center border border-[#86A789]/20 shadow-inner">
+                        <h2 class="text-2xl font-bold text-brown mb-6">Communication & transparency</h2>
+                        <p class="mb-6">You can expect: clear explanations of the coaching process; honest conversations about progress and challenges; respect for privacy and confidentiality; responsiveness within agreed-upon boundaries. Open communication helps ensure a supportive and consistent experience for everyone involved.</p>
+                        <h3 class="font-bold text-brown mb-2">Supporting long-term growth</h3>
+                        <p class="text-gray-600 italic">The goal of coaching is not quick fixes. It's about helping individuals build confidence and self-trust, develop realistic sustainable routines, feel more capable in daily life, and experience progress without pressure. Small, steady steps create meaningful change.</p>
+                        <div class="mt-8 border-t border-[#86A789]/20 pt-8">
+                            <p class="mb-4 text-gray-600">If you're considering coaching and want to learn more, a free intro call is the best place to start. We'll discuss your loved one's needs, answer your questions, and explore whether Root to Rise Coaching is the right fit.</p>
+                            <button onclick="navigateTo('contact')" class="w-full btn-primary py-4 rounded-xl font-bold">Let's talk</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. FAQS PAGE -->
+        <section id="faqs" class="page-section fade-in">
+            <div class="max-w-7xl mx-auto py-20 px-4">
+                <div class="text-center mb-16">
+                    <h1 class="text-4xl font-bold text-brown mb-4">Frequently asked questions</h1>
+                    <p class="text-gray-600 max-w-2xl mx-auto">Choosing coaching for yourself or a loved one is an important decision. Below are answers to common questions.</p>
+                </div>
+
+                <div class="max-w-3xl mx-auto space-y-4">
+                    <!-- FAQ 1 -->
+                    <div class="faq-item bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+                        <button type="button" id="faq-1" name="faq-1" onclick="toggleFaq(this)" class="w-full flex justify-between items-center p-6 text-left hover:bg-cream transition" aria-expanded="false" aria-controls="faq-content-1">
+                            <span class="font-bold text-brown">Who is Root to Rise Coaching for?</span>
+                            <i data-lucide="chevron-down" class="faq-icon transition-transform text-[#86A789]"></i>
+                        </button>
+                        <div class="faq-content" id="faq-content-1">
+                            <div class="px-6 pb-6 text-gray-600">
+                                Root to Rise Coaching supports teens (13–18) and adults with special needs—including developmental, learning, or cognitive differences—and their families. Programs are adapted to individual abilities, preferences, and sensory needs.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 2 -->
+                    <div class="faq-item bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+                        <button type="button" id="faq-2" name="faq-2" onclick="toggleFaq(this)" class="w-full flex justify-between items-center p-6 text-left hover:bg-cream transition" aria-expanded="false" aria-controls="faq-content-2">
+                            <span class="font-bold text-brown">What does coaching include?</span>
+                            <i data-lucide="chevron-down" class="faq-icon transition-transform text-[#86A789]"></i>
+                        </button>
+                        <div class="faq-content" id="faq-content-2">
+                            <div class="px-6 pb-6 text-gray-600">
+                                Coaching focuses on movement, nutrition, routine, wellness, and growth in a structured, supportive way. Sessions are online and may include gentle adaptive movement, habit-building guidance, routine planning, and emotional regulation support. It is educational and lifestyle-focused, not medical or therapeutic.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 3 -->
+                    <div class="faq-item bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+                        <button type="button" id="faq-3" name="faq-3" onclick="toggleFaq(this)" class="w-full flex justify-between items-center p-6 text-left hover:bg-cream transition" aria-expanded="false" aria-controls="faq-content-3">
+                            <span class="font-bold text-brown">How do I get started?</span>
+                            <i data-lucide="chevron-down" class="faq-icon transition-transform text-[#86A789]"></i>
+                        </button>
+                        <div class="faq-content" id="faq-content-3">
+                            <div class="px-6 pb-6 text-gray-600">
+                                Start with a free intro call. We'll get to know each other, discuss needs and goals, answer your questions, and determine if the program is a good fit. There's no obligation.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 4 -->
+                    <div class="faq-item bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+                        <button type="button" id="faq-4" name="faq-4" onclick="toggleFaq(this)" class="w-full flex justify-between items-center p-6 text-left hover:bg-cream transition" aria-expanded="false" aria-controls="faq-content-4">
+                            <span class="font-bold text-brown">Can parents or caregivers be involved?</span>
+                            <i data-lucide="chevron-down" class="faq-icon transition-transform text-[#86A789]"></i>
+                        </button>
+                        <div class="faq-content" id="faq-content-4">
+                            <div class="px-6 pb-6 text-gray-600">
+                                Yes. Depending on the participant's age and needs, parents or caregivers can join the intro call, receive optional check-ins, and help reinforce routines at home. The individual's autonomy and voice are always respected.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 5 -->
+                    <div class="faq-item bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+                        <button type="button" id="faq-5" name="faq-5" onclick="toggleFaq(this)" class="w-full flex justify-between items-center p-6 text-left hover:bg-cream transition" aria-expanded="false" aria-controls="faq-content-5">
+                            <span class="font-bold text-brown">What is the cost and format?</span>
+                            <i data-lucide="chevron-down" class="faq-icon transition-transform text-[#86A789]"></i>
+                        </button>
+                        <div class="faq-content" id="faq-content-5">
+                            <div class="px-6 pb-6 text-gray-600">
+                                Programs are offered online via live sessions (1:1 or small group). Investment and session frequency are discussed during the free intro call so we can match the right level of support to you.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-16">
+                    <button onclick="navigateTo('contact')" class="btn-primary px-8 py-4 rounded-full font-bold">Book a Free Intro Call</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. CONTACT PAGE (root5 full structure, root2 design) -->
+        <section id="contact" class="page-section fade-in">
+            <!-- Hero -->
+            <div class="py-16 md:py-24 bg-[#4F4A45]/10">
+                <div class="max-w-3xl mx-auto px-4 text-center">
+                    <h1 class="text-4xl md:text-5xl font-bold text-brown mb-6 leading-tight">Ready to take the first step?</h1>
+                    <p class="text-lg text-gray-600 leading-relaxed">Booking a free intro call is a relaxed, no-obligation way to see if we are a good fit.</p>
+                </div>
+            </div>
+
+            <!-- Send us a message -->
+            <div class="max-w-2xl mx-auto px-4 py-16 md:py-24">
+                <div class="bg-white p-8 md:p-10 rounded-3xl shadow-lg border border-gray-100">
+                    <h2 class="text-2xl md:text-3xl font-bold text-brown mb-8 text-center">Send us a message</h2>
+
+                    <div id="formSuccess" class="hidden mb-6 p-6 bg-[#86A789]/10 border-2 border-[#86A789] rounded-2xl text-center">
+                        <h3 class="text-xl font-bold text-[#86A789] mb-2">Thank you for reaching out!</h3>
+                        <p class="text-gray-600">We've received your message and will get back to you soon.</p>
+                    </div>
+
+                    <form id="contactForm" class="space-y-6" onsubmit="handleForm(event)">
+                        <div>
+                            <label class="block text-sm font-bold text-brown mb-2">
+                                Name *
+                                <input type="text" id="contactName" name="name" required placeholder="Your name" autocomplete="name" class="mt-2 w-full p-3 rounded-xl border-none ring-1 ring-[#86A789]/30 focus:ring-2 focus:ring-[#86A789] block">
+                            </label>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-brown mb-2">
+                                Email *
+                                <input type="email" id="contactEmail" name="email" required placeholder="your.email@example.com" autocomplete="email" class="mt-2 w-full p-3 rounded-xl border-none ring-1 ring-[#86A789]/30 focus:ring-2 focus:ring-[#86A789] block">
+                            </label>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-brown mb-2">
+                                Message *
+                                <textarea id="contactMessage" name="message" required rows="6" placeholder="Tell us a bit about your situation and what you're looking for..." autocomplete="off" class="mt-2 w-full p-3 rounded-xl border-none ring-1 ring-[#86A789]/30 focus:ring-2 focus:ring-[#86A789] resize-none block"></textarea>
+                            </label>
+                        </div>
+                        <button type="submit" id="contactSubmit" name="submit" class="w-full btn-primary py-4 rounded-xl font-bold text-lg">Send Message</button>
+                        <p class="text-sm text-gray-500 text-center">We'll get back to you within 24 hours.</p>
+                    </form>
+                </div>
+
+                <p class="mt-8 text-center text-gray-600">Prefer to schedule directly? Look for our booking calendar below or reach out via email.</p>
+            </div>
+
+            <!-- Schedule your free intro call -->
+            <div class="max-w-3xl mx-auto px-4 py-16 md:py-24">
+                <h2 class="text-2xl md:text-3xl font-bold text-brown mb-8 text-center">Schedule your free intro call</h2>
+                <div class="bg-white p-10 md:p-12 rounded-3xl shadow-sm border border-gray-100 text-center">
+                    <div class="bg-cream rounded-2xl flex flex-col items-center justify-center border-2 border-dashed border-[#86A789]/40 py-16 px-4">
+                        <i data-lucide="calendar" class="w-16 h-16 text-[#86A789] mb-4"></i>
+                        <p class="text-gray-600 mb-2">Calendly or other scheduling tool would be embedded here. This allows you to book a time that works for you directly.</p>
+                        <p class="text-sm text-gray-500 italic">[Booking integration placeholder - connect your preferred scheduling tool]</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- What to expect -->
+            <div class="py-16 md:py-24 bg-[#4F4A45]/10">
+                <div class="max-w-3xl mx-auto px-4 text-center">
+                    <h2 class="text-2xl md:text-3xl font-bold text-brown mb-4">What to expect</h2>
+                    <p class="text-lg text-gray-600 leading-relaxed mb-6">During your free intro call, we'll get to know each other, discuss your needs and goals, answer any questions you have, and determine if Root to Rise Coaching is the right fit. There's no pressure—this is simply a chance to connect and explore.</p>
+                    <p class="text-sm text-gray-500 italic">Root to Rise Coaching provides educational and lifestyle coaching only and does not replace medical, nutritional, or mental health care.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- GLOBAL FOOTER -->
+    <footer class="bg-[#4F4A45] text-white pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="md:col-span-2">
+                    <div class="flex items-center mb-4">
+                        <div class="w-8 h-8 bg-[#86A789] rounded-full flex items-center justify-center mr-2">
+                            <i data-lucide="sprout" class="w-5 h-5 text-white"></i>
+                        </div>
+                        <span class="text-xl font-bold">Root to Rise Coaching</span>
+                    </div>
+                    <p class="text-gray-300 max-w-sm mb-4">Helping teens and adults with special needs build healthy routines for life.</p>
+                </div>
+                <div>
+                    <h3 class="font-bold mb-4 text-[#86A789]">Navigation</h3>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li><a href="#" onclick="navigateTo('home')" class="hover:text-white transition">Home</a></li>
+                        <li><a href="#" onclick="navigateTo('about')" class="hover:text-white transition">About</a></li>
+                        <li><a href="#" onclick="navigateTo('programs')" class="hover:text-white transition">Programs</a></li>
+                        <li><a href="#" onclick="navigateTo('how-it-works')" class="hover:text-white transition">How It Works</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold mb-4 text-[#86A789]">Connect</h3>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li><a href="#" onclick="navigateTo('parents')" class="hover:text-white transition">For Parents</a></li>
+                        <li><a href="#" onclick="navigateTo('faqs')" class="hover:text-white transition">FAQs</a></li>
+                        <li><a href="#" onclick="navigateTo('contact')" class="hover:text-white transition">Book a Call</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-600 pt-8 text-center">
+                <p class="text-xs text-gray-400 mb-4 max-w-2xl mx-auto">
+                    Root to Rise Coaching provides educational and lifestyle coaching only and does not replace medical, nutritional, or mental health care.
+                </p>
+                <p class="text-sm text-gray-500">&copy; <span id="footerYear"></span> Root to Rise Coaching. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Navigation logic
+        function navigateTo(pageId) {
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            const target = document.getElementById(pageId);
+            if (target) {
+                target.classList.add('active');
+                window.scrollTo(0, 0);
+            }
+            document.getElementById('mobile-menu').classList.add('hidden');
+        }
+
+        document.getElementById('mobile-menu-btn').onclick = function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        };
+
+        function toggleFaq(button) {
+            const item = button.closest('.faq-item');
+            const isActive = item.classList.contains('active');
+            document.querySelectorAll('.faq-item').forEach(i => {
+                i.classList.remove('active');
+            });
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        }
+
+        function handleForm(e) {
+            e.preventDefault();
+            document.getElementById('contactForm').classList.add('hidden');
+            document.getElementById('formSuccess').classList.remove('hidden');
+            lucide.createIcons();
+        }
+
+        if (document.getElementById('footerYear')) {
+            document.getElementById('footerYear').textContent = new Date().getFullYear();
+        }
+    </script>
+</body>
+</html>
